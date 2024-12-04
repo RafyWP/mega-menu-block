@@ -17,6 +17,27 @@ const { state, actions } = store( 'outermost/mega-menu', {
 		},
 	},
 	actions: {
+		toggleMenuOnHover() {
+			const context = getContext();
+			const { ref } = getElement();
+	
+			if (state.menuOpenedBy.hover) {
+				actions.closeMenu('hover');
+			} else {
+				context.previousFocus = ref;
+				actions.openMenu('hover');
+			}
+		},
+		handleMenuMouseleave(event) {
+			const context = getContext();
+			const menuContainer = context.megaMenu?.querySelector(
+				'.wp-block-outermost-mega-menu__menu-container'
+			);
+	
+			if (!menuContainer?.contains(event.relatedTarget)) {
+				actions.closeMenu('hover');
+			}
+		},
 		toggleMenuOnClick() {
 			const context = getContext();
 			const { ref } = getElement();

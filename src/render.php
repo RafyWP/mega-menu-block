@@ -44,14 +44,16 @@ $toggle_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" widt
 	data-wp-context='{ "menuOpenedBy": {} }'
 	data-wp-on--focusout="actions.handleMenuFocusout"
 	data-wp-on--keydown="actions.handleMenuKeydown"
+	data-wp-on--mouseleave="actions.handleMenuMouseleave"
 	data-wp-watch="callbacks.initMenu"
 >
 	<button
 		class="wp-block-outermost-mega-menu__toggle"
 		data-wp-on--click="actions.toggleMenuOnClick"
+		data-wp-on--mouseenter="actions.toggleMenuOnHover"
 		data-wp-bind--aria-expanded="state.isMenuOpen"
 	>
-		<?php echo $label; ?><span class="wp-block-outermost-mega-menu__toggle-icon"><?php echo $toggle_icon; ?></span>
+		<?php echo $label; ?>
 	</button>
 
 	<div
@@ -59,14 +61,6 @@ $toggle_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" widt
 		tabindex="-1"
 	>
 		<?php echo block_template_part( $menu_slug ); ?>
-		<button 
-			aria-label="<?php echo __( 'Close menu', 'mega-menu' ); ?>" 
-			class="menu-container__close-button" 
-			data-wp-on--click="actions.closeMenuOnClick"
-			type="button" 
-		>
-			<?php echo $close_icon; ?>
-		</button>
 	</div>
 
 	<?php if ( $disable_when_collapsed && $collapsed_url ) { ?>

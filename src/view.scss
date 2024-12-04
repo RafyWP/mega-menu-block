@@ -107,7 +107,12 @@
             }
 
             &.menu-width-wide {
-                left: calc( ( -1 * var(--wp--style--global--wide-size) / 2 ) + 50% );
+                top: 105px;
+                left: calc(100% - 603px);
+
+                p.has-custom-gray-600-color {
+                    font-weight: 400;
+                }
             }
         }
     }
